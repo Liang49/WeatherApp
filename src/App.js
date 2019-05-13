@@ -22,7 +22,9 @@ class App extends React.Component {
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=5c66788ef43e098b7eb3046d5ea6fa3f"
     ).then(x => {
-      console.log(x);
+      x.json().then(y => {
+        console.log(y);
+      });
     });
   }
 
