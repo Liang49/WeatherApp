@@ -8,9 +8,22 @@ class App extends React.Component {
     super(props);
     this.state = {
       city: "Brooklyn",
-      country: "United States"
+      country: "United States",
+      data: []
     };
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.getWeather();
+  }
+
+  getWeather(e) {
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=5c66788ef43e098b7eb3046d5ea6fa3f"
+    ).then(x => {
+      console.log(x);
+    });
   }
 
   handleClick() {
@@ -22,7 +35,7 @@ class App extends React.Component {
     return (
       <div>
         <Title />
-        <InputBar />
+        <InputBar getWeather={this.getWeather} />
         <Weather city={this.state.city} handleClick={this.handleClick} />
       </div>
     );
