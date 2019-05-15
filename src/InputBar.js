@@ -3,8 +3,13 @@ import React from "react";
 class InputBar extends React.Component {
   render() {
     return (
-      <form onSubmit={this.props.getWeather}>
-        <input type="text" name="city" placeholder="City" />
+      <form onSubmit={this.props.getWeather} onClick={this.props.preventReload}>
+        <input
+          onChange={this.props.country}
+          type="text"
+          name="city"
+          placeholder="City"
+        />
         <input type="text" name="country" placeholder="Country" />
         <button>Find</button>
       </form>

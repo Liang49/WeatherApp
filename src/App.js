@@ -8,22 +8,31 @@ class App extends React.Component {
     super(props);
     this.state = {
       city: "Brooklyn",
-      country: "United States",
-      data: []
+      country: "us",
+      temp: "0"
     };
     this.handleClick = this.handleClick.bind(this);
+    this.preventReload = this.preventReload.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(event) {
     this.getWeather();
   }
+  preventReload(event) {
+    event.preventDefault();
+  }
 
-  getWeather(e) {
-    fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=5c66788ef43e098b7eb3046d5ea6fa3f"
-    ).then(x => {
+  getWeather(event) {
+    const { city } = this.state;
+
+    const endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=5c66788ef43e098b7eb3046d5ea6fa3f`;
+
+    fetch(endpoint).then(x => {
       x.json().then(y => {
         console.log(y);
+        this.setState({
+          temp: y.main.temp
+        });
       });
     });
   }
@@ -37,8 +46,16 @@ class App extends React.Component {
     return (
       <div>
         <Title />
-        <InputBar getWeather={this.getWeather} />
-        <Weather city={this.state.city} handleClick={this.handleClick} />
+        <InputBar
+          city={this.props.city}
+          getWeather={this.getWeather}
+          preventReload={this.preventReload}
+        />
+        <Weather
+          temp={this.state.temp}
+          city={this.state.city}
+          handleClick={this.handleClick}
+        />
       </div>
     );
   }
