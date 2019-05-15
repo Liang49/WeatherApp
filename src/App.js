@@ -13,6 +13,7 @@ class App extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.preventReload = this.preventReload.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount(event) {
@@ -31,12 +32,17 @@ class App extends React.Component {
       x.json().then(y => {
         console.log(y);
         this.setState({
-          temp: y.main.temp
+          temp: y.main.temp,
+          city: event.target.value
         });
       });
     });
   }
-
+  handleChange(event) {
+    this.setState({
+      city: event.target.value
+    });
+  }
   handleClick() {
     this.setState({
       city: "Queens"
@@ -47,9 +53,10 @@ class App extends React.Component {
       <div>
         <Title />
         <InputBar
-          city={this.props.city}
+          handleChange={this.handleChange}
           getWeather={this.getWeather}
           preventReload={this.preventReload}
+          city={this.state.city}
         />
         <Weather
           temp={this.state.temp}
