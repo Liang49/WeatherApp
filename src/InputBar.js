@@ -10,9 +10,11 @@ class InputBar extends React.Component {
       >
         <input
           onChange={this.props.handleChange}
+          city={this.props.city}
           type="text"
           name="city"
           placeholder="City"
+          temp={this.props.temp}
         />
         <input type="text" name="country" placeholder="Country" />
         <button>Find</button>
