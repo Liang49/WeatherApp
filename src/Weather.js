@@ -6,7 +6,8 @@ class Weather extends React.Component {
       <div>
         <button onClick={this.props.handleClick}> Click me</button>
         <h2>{this.props.city}</h2>
-        <h2>{this.props.temp}</h2>
+        <h2>Temperature: {this.props.temp}</h2>
+        <h2>Weather: {this.props.weather}</h2>
       </div>
     );
   }

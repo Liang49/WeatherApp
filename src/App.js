@@ -9,7 +9,8 @@ class App extends React.Component {
     this.state = {
       city: "",
       country: "us",
-      temp: "0",
+      temp: "",
+      weather: "",
       data: []
     };
     this.handleClick = this.handleClick.bind(this);
@@ -25,6 +26,10 @@ class App extends React.Component {
     );
     const data = await endpoint.json();
     console.log(data);
+    this.setState({
+      temp: data.main.temp,
+      weather: data.weather[0].main
+    });
   }
 
   /* getWeather(event) {
@@ -64,6 +69,8 @@ class App extends React.Component {
         <Weather
           temp={this.state.temp}
           city={this.state.city}
+          weather={this.state.weather}
+          getWeather={this.getWeather}
           handleClick={this.handleClick}
         />
       </div>
