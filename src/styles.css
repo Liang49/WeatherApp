@@ -1,4 +1,7 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+body {
+  background-image: url("https://backgroundcheckall.com/wp-content/uploads/2017/12/weather-background-5.jpg");
+}
+
+.title-style {
+  font-family: "Courier New", Courier, monospace;
 }
