@@ -13,7 +13,6 @@ class App extends React.Component {
       weather: "",
       data: []
     };
-    this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getWeather = this.getWeather.bind(this);
   }
@@ -50,11 +49,7 @@ class App extends React.Component {
       city: event.target.value
     });
   }
-  handleClick(event) {
-    this.setState({
-      city: "queen"
-    });
-  }
+
   render() {
     return (
       <div className="title-style">
