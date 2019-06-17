@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       city: "",
-      country: "us",
+      country: "",
       temp: "",
       weather: "",
       data: []
@@ -20,8 +20,9 @@ class App extends React.Component {
   async getWeather(e) {
     e.preventDefault();
     const city = e.target.elements.city.value;
+    const country = e.target.elements.country.value;
     const endpoint = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=5c66788ef43e098b7eb3046d5ea6fa3f`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}us&appid=5c66788ef43e098b7eb3046d5ea6fa3f`
     );
     const data = await endpoint.json();
     console.log(data);
