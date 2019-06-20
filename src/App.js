@@ -32,19 +32,6 @@ class App extends React.Component {
     });
   }
 
-  /* getWeather(event) {
-    const endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},us&appid=5c66788ef43e098b7eb3046d5ea6fa3f`;
-    fetch(endpoint).then(x => {
-      x.json().then(y => {
-        console.log(y);
-        console.log(y.main)
-        this.setState({
-          temp: y.main.temp,
-          data: y.main
-        });
-      });
-    });
-   } */
   handleChange(event) {
     this.setState({
       city: event.target.value
